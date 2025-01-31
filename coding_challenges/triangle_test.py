@@ -1,5 +1,5 @@
 import unittest
-from py_130.coding_challenges.triangle import Triangle
+from triangle import Triangle
 
 class TestTriangle(unittest.TestCase):
     def test_equilateral_equal_sides(self):
