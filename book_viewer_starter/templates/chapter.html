@@ -1,8 +1,9 @@
 {% extends 'layout.html' %}
 
 {% block content %}
-  <h2 class="content-subhead">{{ chapter_title }}</h2>
-
-  {{ chapter | in_paragraphs | safe}}
+<h2 class="content-subhead">{{ chapter_title }}</h2>
+  
+{{ chapter_text | in_paragraphs | safe }}
 
 {% endblock %}
+

@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Users and Interests</title>
+    </head>
+    <body>
+        {% block content %}{% endblock %}
+        <p>There are {{ g.total_users }} users 
+            with a total of {{ g.total_interests}} interests.
+        </p>
+    </body>
+    
+</html>

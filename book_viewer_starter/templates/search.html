@@ -1,24 +1,31 @@
 {% extends "layout.html" %}
 
 {% block content %}
-    <h2 class="content-subhead">Search</h2>
+  <h2 class="content-subhead">Search</h2>
 
-    <form action="{{ url_for('search') }}" method="get">
-        <input name="query" value="{{ query }}" />
-        <button type="submit">Search</button>
-    </form>
+  <form action="{{ url_for('search') }}" method="get">
+    <input name="query" value="{{ query }}" />
+    <button type="submit">Search</button>
+  </form>
 
-    {% if query %}
-        {% if results | length == 0: %}
-            <p>Sorry, no matches were found.</p>
-        {% else %}
-            <h2 class="content-subhead">Results for '{{ query }}'</h2>
+  {% if query %}
+    {% if results | length == 0: %}
+        <p>Sorry, no matches were found.</p>
+    {% else %}
+        <h2 class="content-subhead">Results for '{{ query }}'</h2>
 
-            <ul>
-                {% for result in results %}
-                    <li><a href='/chapters/{{ result.number }}'>{{ result.name }}</a></li>
-                {% endfor %}
-            </ul>
-        {% endif %}
+        <ul>
+            {% for chapter in results %}
+                <li><strong>{{ chapter.name }}</strong>
+                    <ul>
+                        {% for paragraph in chapter.paragraphs %}
+                            <li><a href="{{ url_for('chapters', page_num=chapter.number) }}">{{ paragraph }}</a></li>
+                        {% endfor %}
+                    </ul>
+                
+                </li>
+            {% endfor %}
+        </ul>
     {% endif %}
+  {% endif %}
 {% endblock %}
